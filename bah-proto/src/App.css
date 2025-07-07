@@ -1,49 +1,124 @@
-/* App.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Gilroy', sans-serif;
-  font-weight: bolder;
-}
-
 html, body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
-#a {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  display: flex;
-  border-bottom: 2px solid black;
-  justify-content: space-between;
-  width: 100%;
-  background-color: white;
+#a{
+     position: "absolute";
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        display: flex;
+        border-bottom:2px solid black ;
+        justify-content: space-between;
+      
+}
+.b{
+    margin-top: 20px;
+    height: 10vh;
+    width: 20vh;
+    /* background-color: lightseagreen; */
+    padding-top: 0.5vh;
+}
+.box{
+    margin-bottom:1vh;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 0;
+}
+.lambabox{
+    border: 1px solid black;
+    margin-bottom: 3px;
+    width: 14vh;
+    padding: 0;
+    border-radius: 0;
+}
+#other{
+        display: flex;
+        gap: 4vw;
+        align-items: center;
+}
+button{
+        height: 5vh;
+        font-size: 1vw;
+    padding: 0.7vw 1.4vw;
+    background-color: lightseagreen;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    transition: width 0.3s;
+       box-shadow : inset 0 -2px 3px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.3); /* inner and outer shadow */
+      transition: 0.3s, transform 0.2s;
+}
+button:hover{
+     background-color: rgba(32, 178, 171, 0.801);
+      transform: translateY(-2px); /* lift on hover */
 }
 
-#other {
-  display: flex;
-  gap: 4vw;
-  align-items: center;
+#svg{
+        height:5%;
+        width:5%;
 }
+#o{
+    height: 40%;
+}
+ .sidebar {
+      position: fixed;
+      top: 15vh; /* leave space for future navbar */
+      left: 0;
+      width: 60px; /* compact width */
+      height: calc(25vh); /* fill remaining height */
+      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      transition: width 0.3s;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3); 
+      /* 3D right-side shadow */
+      border-right: 2px solid #1a252f;
+      
+    }
 
-button {
-  height: 5vh;
-  font-size: 1vw;
-  padding: 0.7vw 1.4vw;
-  background-color: lightseagreen;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-}
+    .sidebar:hover {
+      width: 160px; /* optional expand on hover */
+    }
 
-img {
-  height: 5%;
-  width: 5%;
-}
+    .sidebar h2 {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .btn {
+      background-color: lightseagreen;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      
+      box-shadow : inset 0 -2px 3px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.3); /* inner and outer shadow */
+      transition: 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: rgba(32, 178, 171, 0.801);
+      transform: translateY(-3px); /* lift on hover */
+    }
+    /* Placeholder for navbar */
+    h4:hover{
+              transform: translateY(-3px);
+    }
+    img:hover{
+              transform: translateY(-3px);
+    }
