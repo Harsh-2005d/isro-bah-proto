@@ -3,7 +3,7 @@ import MapComponent from "../components/mapComponent";
 function App() {
   return (
     <>   <div id="a">
-        <img id="svg" src="">
+        <img id="svg" src="WhatsApp Image 2025-07-07 at 2.09.14 PM.jpeg">
         <div id="other">
         <h4>ChatBot</h4>
         <h4>Backtracking</h4>
