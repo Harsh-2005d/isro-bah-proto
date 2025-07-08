@@ -1,4 +1,10 @@
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+  Marker,
+  Tooltip,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.heat";
@@ -67,7 +73,7 @@ const HeatmapLayer = ({ gridData, cityData, pollutant }) => {
   return null;
 };
 
-const MapComponent = ({ pollutant }) => {
+const MapComponent = ({ pollutant, onCitySelect }) => {
   const [gridPM, setGridPM] = useState([]);
   const [cityPM, setCityPM] = useState([]);
 
@@ -95,20 +101,32 @@ const MapComponent = ({ pollutant }) => {
 
   return (
     <>
-      
-
-      <MapContainer
-        center={[22.5, 80]}
-        zoom={5}
-        style={{ height: "calc(100vh - 80px)", width: "100%" }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <HeatmapLayer
-          gridData={gridPM}
-          cityData={cityPM}
-          pollutant={pollutant}
-        />
-      </MapContainer>
+      <div className="relative ">
+        <MapContainer
+          center={[22.5, 80]}
+          zoom={5}
+          style={{ height: "calc(100vh - 80px)", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <HeatmapLayer
+            gridData={gridPM}
+            cityData={cityPM}
+            pollutant={pollutant}
+          />
+          {onCitySelect != null &&
+            cityPM.map((city, idx) => (
+              <Marker
+                key={idx}
+                position={[city.lat, city.lon]}
+                eventHandlers={{
+                  click: () => onCitySelect(city), // ✅ Trigger callback
+                }}
+              >
+                <Tooltip>{city.name}</Tooltip>
+              </Marker>
+            ))}
+        </MapContainer>
+      </div>
     </>
   );
 };

@@ -3,6 +3,7 @@ import MapComponent from "../components/mapComponent";
 
 function App() {
   const [selectedPollutant, setSelectedPollutant] = useState("pm25");
+  const [selectedCity, setSelectedCity] = useState(null);
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-[#0b0f1a] text-gray-200 font-sans">
@@ -80,10 +81,59 @@ function App() {
         </ul>
       </div>
       <div className="relative h-screen w-screen font-sans bg-[#0F172A] text-white rounded-4xl">
-        {/* 🗺️ Map Box */}
-        <div className="absolute top-16 left-44 right-4 bottom-4 rounded-4xl shadow-lg border border-[#2d3748] z-10">
-          <MapComponent pollutant={selectedPollutant} />
+        <div className="absolute top-16 left-44 right-4 bottom-4 rounded-xl overflow-hidden shadow-lg border border-[#2d3748] z-10">
+          <MapComponent
+            selectedPollutant={selectedPollutant}
+            onCitySelect={setSelectedCity}
+          />
         </div>
+        {selectedCity && (
+          <div className="absolute inset-y-0 right-6 flex items-center z-50">
+            <div className="w-72 bg-[#1E293B]/90 backdrop-blur-lg p-5 rounded-xl shadow-xl text-white border border-[#334155]">
+              <h2 className="text-xl font-semibold text-cyan-400 tracking-wide mb-3">
+                {selectedCity.name}
+              </h2>
+
+              <div className="space-y-2 text-sm text-gray-200">
+                <div className="flex justify-between">
+                  <span className="font-medium text-gray-400">PM 2.5</span>
+                  <span className="font-semibold text-amber-50">
+                    {selectedCity.pm25.toFixed(2)}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium text-gray-400">PM 10</span>
+                  <span className="font-semibold text-white">
+                    {selectedCity.pm10.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Random Graph Placeholder */}
+              <div className="mt-6">
+                <h4 className="text-sm font-semibold text-gray-400 mb-2">
+                  Last 24h PM2.5 Variation
+                </h4>
+                <div className="w-full h-24 rounded bg-[#0F172A] border border-gray-700 overflow-hidden">
+                  <svg viewBox="0 0 100 40" className="w-full h-full">
+                    <polyline
+                      fill="none"
+                      stroke="#22d3ee"
+                      strokeWidth="2"
+                      points={Array.from({ length: 20 }, () =>
+                        Math.floor(10 + Math.random() * 30)
+                      )
+                        .map((y, i) => `${i * 5},${40 - y}`)
+                        .join(" ")}
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div className="mt-4 text-xs text-gray-500">Updated just now</div>
+            </div>
+          </div>
+        )}
 
         {/* 🔍 Search Bar Above Map */}
         <div className="absolute top-24 left-[calc(44px+50%)] transform -translate-x-1/2 z-50 w-[90%] max-w-[800px]">
@@ -93,7 +143,7 @@ function App() {
               <svg
                 className="h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                fill="white"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
