@@ -111,7 +111,7 @@ function App() {
               <svg
                 className="h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
+                fill="white"
                 viewBox="0 0 24 24"
               >
                 <path d="M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3z" />
@@ -123,7 +123,7 @@ function App() {
             <input
               type="text"
               placeholder="Search city or region..."
-              className="opacity-70 w-full px-10 pr-10 py-2 rounded-lg bg-[#1E293B] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-10 pr-10 py-2 rounded-lg bg-[#1E293B]/70 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             />
           </div>
         </div>
