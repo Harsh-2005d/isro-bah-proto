@@ -83,7 +83,7 @@ function App() {
       <div className="relative h-screen w-screen font-sans bg-[#0F172A] text-white rounded-4xl">
         <div className="absolute top-16 left-44 right-4 bottom-4 rounded-xl overflow-hidden shadow-lg border border-[#2d3748] z-10">
           <MapComponent
-            selectedPollutant={selectedPollutant}
+            pollutant={selectedPollutant}
             onCitySelect={setSelectedCity}
           />
         </div>
@@ -98,21 +98,16 @@ function App() {
                 <div className="flex justify-between">
                   <span className="font-medium text-gray-400">PM 2.5</span>
                   <span className="font-semibold text-amber-50">
-                    {selectedCity.pm25.toFixed(2)}
+                    {selectedCity.pm25} µg/m³
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="font-medium text-gray-400">PM 10</span>
-                  <span className="font-semibold text-white">
-                    {selectedCity.pm10.toFixed(2)}
-                  </span>
-                </div>
+                
               </div>
 
               {/* Random Graph Placeholder */}
               <div className="mt-6">
                 <h4 className="text-sm font-semibold text-gray-400 mb-2">
-                  Last 24h PM2.5 Variation
+                  Last 24h PM 2.5 Variation
                 </h4>
                 <div className="w-full h-24 rounded bg-[#0F172A] border border-gray-700 overflow-hidden">
                   <svg viewBox="0 0 100 40" className="w-full h-full">

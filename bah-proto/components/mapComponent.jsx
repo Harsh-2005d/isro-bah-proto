@@ -10,16 +10,30 @@ import L from "leaflet";
 import "leaflet.heat";
 import { useEffect, useState } from "react";
 
+
+
 delete L.Icon.Default.prototype._getIconUrl;
 
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png",
-  iconUrl:
-    "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png",
-  shadowUrl:
-    "https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png",
+
+
+const dotIcon = L.divIcon({
+  className: '', // remove default styles
+  html: `<div style="
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    opacity: 70%;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  "></div>`,
+  iconSize: [16, 16],
+  iconAnchor: [8, 8],  // center the dot exactly at the coordinate
+  popupAnchor: [0, -8],
 });
+
+L.Marker.prototype.options.icon = dotIcon;
+
 
 // 🔥 Heatmap Layer Component
 const HeatmapLayer = ({ gridData, cityData, pollutant }) => {
