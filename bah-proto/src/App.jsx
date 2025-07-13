@@ -55,7 +55,7 @@ function App() {
         <ul className="space-y-2">
           <li>
             <button className="w-full text-left text-sm hover:text-cyan-300">
-              💬 Chatbot
+              💬  AI Chatbot
             </button>
           </li>
           <li>
@@ -96,9 +96,9 @@ function App() {
 
               <div className="space-y-2 text-sm text-gray-200">
                 <div className="flex justify-between">
-                  <span className="font-medium text-gray-400">PM 2.5</span>
+                  <span className="font-medium text-gray-400">{selectedPollutant}</span>
                   <span className="font-semibold text-amber-50">
-                    {selectedCity.pm25} µg/m³
+                    {selectedCity[selectedPollutant]?.toFixed(2)} µg/m³
                   </span>
                 </div>
                 

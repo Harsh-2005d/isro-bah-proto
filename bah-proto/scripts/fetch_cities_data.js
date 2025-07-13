@@ -24,7 +24,7 @@ const fetchCityData = async () => {
     const params = {
       latitude: city.lat,
       longitude: city.lon,
-      hourly: ["pm10", "pm2_5"],
+      daily: ["pm10", "pm2_5"],
       timezone: "Asia/Kolkata",
       domains: "cams_global",
     };
@@ -32,10 +32,10 @@ const fetchCityData = async () => {
     try {
       const responses = await fetchWeatherApi(url, params);
       const response = responses[0];
-      const hourly = response.hourly();
+      const daily = response.daily();
 
-      const pm10 = hourly.variables(0).valuesArray()[0];
-      const pm25 = hourly.variables(1).valuesArray()[0];
+      const pm10 = daily.variables(0).valuesArray()[0];
+      const pm25 = daily.variables(1).valuesArray()[0];
 
       results.push({ ...city, pm10, pm25 });
       console.log(`✓ ${city.name}: PM2.5=${pm25}, PM10=${pm10}`);
@@ -46,8 +46,8 @@ const fetchCityData = async () => {
     await new Promise((r) => setTimeout(r, 200)); // polite throttling
   }
 
-  fs.writeFileSync("public/cities_pm_data.json", JSON.stringify(results, null, 2));
-  console.log("✅ Data saved to public/cities_pm_data.json");
+  fs.writeFileSync("public/city_pm_data.json", JSON.stringify(results, null, 2));
+  console.log("✅ Data saved to public/city_pm_data.json");
 };
 
 fetchCityData();
